@@ -43,13 +43,26 @@ This is not a solution for actually getting rid of all the infected libraries or
 ```
 
 ## IP blocking
-UFW
-```
+Ubuntu UFW
+```bash
 sudo ufw deny out from any to 136.0.9.8
 sudo ufw deny out from any to 23.27.20.143
 sudo ufw deny out from any to 23.27.202.27
 sudo ufw deny out from any to 166.88.4.2
 ```
+
+Mac pfctl:
+1. Edit - `sudo nano /etc/pf.conf`, append:
+    ```
+    # JS Malware C&C servers
+    block drop from any to 136.0.9.8
+    block drop from any to 23.27.20.143
+    block drop from any to 23.27.202.27
+    block drop from any to 166.88.4.2
+    ```
+2. Load - `sudo pfctl -f /etc/pf.conf`
+3. Enable - `sudo pfctl -e`
+
 
 ## IDE persistence
 If any of the files contain the senteniel value "C250617A", fully delete and reinstall the infected IDE.
