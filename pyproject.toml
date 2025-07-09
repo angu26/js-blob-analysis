@@ -1,0 +1,24 @@
+[project]
+name = "js-blob-analysis"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "click>=8.2.1",
+    "esprima>=4.0.1",
+    "jsbeautifier>=1.15.4",
+    "requests>=2.32.4",
+]
+
+[project.scripts]
+decode-js-malware = "src.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.1",
+]
